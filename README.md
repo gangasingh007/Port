@@ -1,73 +1,136 @@
-# Welcome to your Lovable project
+Here’s a solid `README.md` you can paste into your project.
 
-## Project info
+```markdown
+## macOS‑style Portfolio Desktop
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+This is a personal portfolio built with **React + TypeScript + Vite + Tailwind CSS + shadcn/ui**, designed to look and feel like a modern macOS desktop. It features draggable app windows, a dock, a menu bar, spotlight search, notifications, and dynamic wallpapers.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+### Features
 
-**Use Lovable**
+- **Mac‑like desktop UI**
+  - Top `MenuBar` with Apple menu actions (About, Sleep, Restart).
+  - Bottom `Dock` with bouncing app icons.
+  - `Spotlight` search (toggle with `Ctrl` + `Space` / `Cmd` + `Space`).
+  - Custom `ContextMenu` on right‑click.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Windowed apps**
+  - `AboutMe` – personal summary/about section.
+  - `Projects` – showcase of selected projects.
+  - `Skills` – tech stack and tools.
+  - `Terminal` – fun, terminal‑style interface.
+  - `Resume` – embedded resume (PDF/DOCX).
+  - `Contact` – ways to reach out.
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Desktop behavior**
+  - `BootScreen` animation before the desktop loads.
+  - Sleep / wake behavior with smooth transitions.
+  - Large minimalist clock when no windows are open.
+  - Rotating wallpaper slideshow using local images.
 
-**Use your preferred IDE**
+- **Modern tech stack**
+  - **React 18 + TypeScript**
+  - **Vite** for fast dev/build.
+  - **Tailwind CSS** + `tailwindcss-animate`.
+  - **shadcn/ui** (Radix UI primitives).
+  - **React Router** (for `Index` / `NotFound` pages).
+  - **Vitest** + Testing Library for unit tests.
+  - Configured **ESLint** for linting.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Getting Started
 
-Follow these steps:
+#### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Node.js** (recommended ≥ 18)
+- **npm** (comes with Node)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+#### Install dependencies
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+#### Run the dev server
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Then open the printed local URL in your browser (usually `http://localhost:5173`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+#### Build for production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Preview the production build:
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Project Structure (simplified)
 
-## How can I deploy this project?
+- **`src/main.tsx`** – App bootstrap (React + Router + Providers).
+- **`src/App.tsx`** – Top‑level app shell & routing.
+- **`src/pages/Index.tsx`** – Renders the `Desktop` experience.
+- **`src/pages/NotFound.tsx`** – 404 page.
+- **`src/components/Desktop.tsx`**
+  - Handles boot state, sleep/wake, wallpaper rotation, clock, and window manager integration.
+- **`src/components/BootScreen.tsx`** – Startup animation before desktop appears.
+- **`src/components/MenuBar.tsx`**, **`Dock.tsx`**, **`MacWindow.tsx`**, **`Spotlight.tsx`**, **`ContextMenu.tsx`**, **`Notification.tsx`**
+  - Core macOS‑style UI components.
+- **`src/components/apps/*`**
+  - `AboutMe.tsx`, `Projects.tsx`, `Skills.tsx`, `Terminal.tsx`, `Resume.tsx`, `Contact.tsx`.
+- **`src/hooks/useWindowManager.ts`**
+  - Manages open windows, focus, positions, minimize/maximize, etc.
+- **`src/assets/*`**
+  - Wallpapers (`background.avif`, `bg*.jpg/avif`) and resume files.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+### Scripts
 
-Yes, you can!
+From `package.json`:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **`npm run dev`** – Start Vite dev server.
+- **`npm run build`** – Build production bundle.
+- **`npm run build:dev`** – Development‑mode build.
+- **`npm run preview`** – Preview the production build locally.
+- **`npm run lint`** – Run ESLint on the project.
+- **`npm run test`** – Run Vitest tests once.
+- **`npm run test:watch`** – Run Vitest in watch mode.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+### Customization
+
+- **Wallpapers**: Update images and imports in `src/components/Desktop.tsx` (`bg1`–`bg10`) and adjust the `imageWallpapers` list as needed.
+- **Apps / Content**:
+  - Edit or replace app components under `src/components/apps/`.
+  - Update the `appContent` map in `Desktop.tsx` to add/remove apps.
+- **Styling**:
+  - Global styles: `src/index.css`, `src/App.css`.
+  - Tailwind config: `tailwind.config.ts`.
+  - UI primitives: `src/components/ui/*` (shadcn/ui components).
+
+---
+
+### Testing & Quality
+
+- **Unit tests** with Vitest + Testing Library (`src/test`).
+- **ESLint** configuration in `eslint.config.js`.
+- Type‑safe codebase using **TypeScript** and strict configs in `tsconfig*.json`.
+
+---
+
+### License
+
+This project is for personal portfolio use. Feel free to read the code and take inspiration; if you reuse significant parts, please give credit in your project’s README.
+```
