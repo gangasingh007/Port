@@ -315,7 +315,7 @@ const Resume = () => {
                 className="p-1 rounded hover:bg-white/[0.06] text-white/30 hover:text-white/60 transition-all disabled:opacity-30 disabled:cursor-default"
                 disabled={currentPage <= 1}
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              >
+              >{}
                 <svg
                   width="10"
                   height="10"
@@ -336,7 +336,7 @@ const Resume = () => {
                 onClick={() =>
                   setCurrentPage((p) => Math.min(totalPages, p + 1))
                 }
-              >
+              >{}
                 <svg
                   width="10"
                   height="10"
@@ -606,7 +606,7 @@ const Resume = () => {
               style={{
                 background: 'white',
                 borderRadius: '0',
-                minHeight: '100%',
+                minHeight: '80%',
               }}
               onLoad={() => setIsLoading(false)}
               onError={() => {

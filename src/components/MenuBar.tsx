@@ -76,15 +76,6 @@ const MenuBar = ({ focusedApp, onAppleMenuAction, onSpotlightOpen }: MenuBarProp
         <button className="px-2 py-0.5 rounded-[4px] hover:bg-white/10 transition-colors font-bold text-white tracking-wide">
           {appName}
         </button>
-
-        {/* Standard Menu Items */}
-        <div className=" flex items-center gap-0.5 text-white/60 ml-3" id="standard-menus">
-          {['File', 'Edit', 'View', 'Window', 'Help'].map((item) => (
-            <button key={item} className="px-2 py-0.5 rounded-[4px] hover:bg-white/10 transition-colors">
-              {item}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* --- Right Side: Status Icons & Time --- */}
